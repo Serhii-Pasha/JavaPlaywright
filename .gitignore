@@ -1,0 +1,30 @@
+# Build
+target/
+*.class
+*.jar
+*.war
+*.ear
+
+# IDE
+.idea/
+*.iml
+.project
+.classpath
+.settings/
+.vscode/
+
+# Test output
+allure-results/
+allure-report/
+test-output/
+reports/
+screenshots/
+traces/
+videos/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
