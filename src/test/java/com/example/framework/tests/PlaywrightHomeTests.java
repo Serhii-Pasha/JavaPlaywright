@@ -21,15 +21,5 @@ public class PlaywrightHomeTests extends BaseTest {
         String heading = docsPage.getHeadingText();
         Assert.assertTrue(heading != null && !heading.isBlank(), "Heading should not be blank");
     }
-
-    @Test(groups = {"regression"}, description = "Intentional failure example to demonstrate screenshot on failure",
-            retryAnalyzer = com.example.framework.retry.RetryAnalyzer.class)
-    public void failingTestForScreenshotDemo() {
-        Page page = DriverManager.getPage();
-        HomePage homePage = new HomePage(page);
-        homePage.search("Playwright");
-        // This assertion is intentionally wrong to trigger failure and screenshot
-        Assert.assertTrue(false, "This test is expected to fail to demo screenshots");
-    }
 }
 
