@@ -8,9 +8,7 @@ import java.io.File;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-/**
- * Singleton provider for ExtentReports instance.
- */
+
 public final class ExtentManager {
 
     private static final String REPORTS_DIR = "reports";

@@ -5,10 +5,7 @@ import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 
-/**
- * Thread-safe holder for Playwright primitives.
- * Enables parallel execution via ThreadLocal isolation.
- */
+
 public final class DriverManager {
 
     private static final ThreadLocal<Playwright> PLAYWRIGHT = new ThreadLocal<>();

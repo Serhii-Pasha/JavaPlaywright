@@ -3,9 +3,7 @@ package com.example.framework.pages;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
-/**
- * Example Page Object for Playwright docs page.
- */
+
 public class DocsPage {
 
     private final Page page;

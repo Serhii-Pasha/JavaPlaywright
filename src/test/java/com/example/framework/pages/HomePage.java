@@ -3,14 +3,10 @@ package com.example.framework.pages;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
-/**
- * Example Page Object for https://playwright.dev home page.
- */
+
 public class HomePage {
 
     private final Page page;
-
-    // Locators
     private final Locator getStartedLink;
     private final Locator searchInput;
 

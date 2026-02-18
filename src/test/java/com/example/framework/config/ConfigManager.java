@@ -8,10 +8,7 @@ import java.io.InputStream;
 import java.util.Objects;
 import java.util.Properties;
 
-/**
- * Centralized configuration management.
- * Loads properties from config-{env}.properties or config.properties.
- */
+
 public final class ConfigManager {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ConfigManager.class);

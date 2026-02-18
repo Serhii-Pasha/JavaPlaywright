@@ -1,24 +1,18 @@
 package com.example.framework.utils;
 
 import io.qameta.allure.Allure;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.nio.file.Path;
 
-/**
- * Helper methods for attaching files to Allure reports.
- */
+
 public final class AllureUtils {
 
     private AllureUtils() {
     }
 
-    /**
-     * Attach file with automatically detected content type based on extension.
-     */
     public static void attachFile(String name, String filePath) {
         if (filePath == null) {
             return;
@@ -42,9 +36,9 @@ public final class AllureUtils {
         try (InputStream is = new FileInputStream(file)) {
             Allure.addAttachment(name, type, is, extension);
         } catch (FileNotFoundException e) {
-            // ignore if file not found
+            
         } catch (Exception e) {
-            // swallow attachment errors to avoid breaking tests
+           
         }
     }
 

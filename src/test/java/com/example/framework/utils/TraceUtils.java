@@ -10,9 +10,7 @@ import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-/**
- * Utility for exporting Playwright traces.
- */
+
 public final class TraceUtils {
 
     private static final String TRACES_DIR = "traces";

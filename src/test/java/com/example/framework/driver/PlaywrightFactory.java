@@ -11,10 +11,7 @@ import com.microsoft.playwright.Playwright;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * Responsible for creating Playwright, Browser, Context and Page instances.
- * Supports browser selection and headless/headed mode.
- */
+
 public final class PlaywrightFactory {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PlaywrightFactory.class);
@@ -50,7 +47,7 @@ public final class PlaywrightFactory {
         Browser browser = browserType.launch(options);
         DriverManager.setBrowser(browser);
 
-        // Enable video recording for each context; videos will be kept/used only for failed tests.
+        
         NewContextOptions contextOptions = new NewContextOptions()
                 .setRecordVideoDir(java.nio.file.Paths.get("videos"));
 

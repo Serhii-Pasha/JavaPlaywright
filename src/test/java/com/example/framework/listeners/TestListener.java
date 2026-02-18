@@ -17,16 +17,11 @@ import org.testng.internal.IResultListener2;
 
 import java.nio.file.Path;
 
-/**
- * TestNG listener to integrate ExtentReports, tracing, video and screenshots on failure.
- */
 public class TestListener implements ITestListener, ISuiteListener, IResultListener2 {
 
     @Override
     public void onStart(ISuite suite) {
-        // Ensure ExtentReports is initialized
         ExtentManager.getExtentReports();
-        // Clean artifacts folders at the start of suite
         FileUtils.cleanDirectory("screenshots");
         FileUtils.cleanDirectory("videos");
     }
@@ -43,7 +38,6 @@ public class TestListener implements ITestListener, ISuiteListener, IResultListe
         ExtentTestManager.startTest(testName, description != null ? description : "");
         ExtentTestManager.getTest().log(Status.INFO, "Test started: " + testName);
 
-        // Start Playwright tracing for this test
         BrowserContext context = DriverManager.getContext();
         if (context != null) {
             context.tracing().start(new Tracing.StartOptions()
@@ -55,7 +49,6 @@ public class TestListener implements ITestListener, ISuiteListener, IResultListe
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        // Stop tracing without exporting for successful tests
         BrowserContext context = DriverManager.getContext();
         if (context != null) {
             context.tracing().stop();
@@ -68,18 +61,14 @@ public class TestListener implements ITestListener, ISuiteListener, IResultListe
     @Override
     public void onTestFailure(ITestResult result) {
         String testName = result.getMethod().getMethodName();
-
-        // Take screenshot
         String screenshotPath = ScreenshotUtils.takeScreenshot(testName);
 
-        // Export trace only for failed tests
         String tracePath = null;
         BrowserContext context = DriverManager.getContext();
         if (context != null) {
             tracePath = TraceUtils.exportTrace(context, testName);
         }
 
-        // Try to resolve video path if available
         String videoPathStr = null;
         Page page = DriverManager.getPage();
         if (page != null && page.video() != null) {
@@ -96,7 +85,7 @@ public class TestListener implements ITestListener, ISuiteListener, IResultListe
         } else {
             ExtentTestManager.getTest().fail(result.getThrowable());
         }
-        // Attach to Extent as concise text logs (only file names)
+       
         if (tracePath != null) {
             String name = java.nio.file.Paths.get(tracePath).getFileName().toString();
             ExtentTestManager.getTest().log(Status.INFO, "Playwright trace: " + name);
@@ -106,7 +95,6 @@ public class TestListener implements ITestListener, ISuiteListener, IResultListe
             ExtentTestManager.getTest().log(Status.INFO, "Playwright video: " + name);
         }
 
-        // Attach screenshot, trace and video to Allure (auto content type)
         if (screenshotPath != null) {
             AllureUtils.attachFile("Screenshot on failure", screenshotPath);
         }
@@ -122,7 +110,6 @@ public class TestListener implements ITestListener, ISuiteListener, IResultListe
 
     @Override
     public void onTestSkipped(ITestResult result) {
-        // Stop tracing if test was skipped
         BrowserContext context = DriverManager.getContext();
         if (context != null) {
             context.tracing().stop();
@@ -134,7 +121,7 @@ public class TestListener implements ITestListener, ISuiteListener, IResultListe
 
     @Override
     public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
-        // Not used
+
     }
 
     @Override
@@ -144,12 +131,12 @@ public class TestListener implements ITestListener, ISuiteListener, IResultListe
 
     @Override
     public void onStart(ITestContext context) {
-        // no-op
+        
     }
 
     @Override
     public void onFinish(ITestContext context) {
-        // no-op
+       
     }
 }
 

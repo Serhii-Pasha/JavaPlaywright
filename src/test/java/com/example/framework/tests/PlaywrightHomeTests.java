@@ -8,9 +8,7 @@ import com.microsoft.playwright.Page;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-/**
- * Example UI tests using Page Object Model.
- */
+
 public class PlaywrightHomeTests extends BaseTest {
 
     @Test(groups = {"smoke"}, description = "Verify that clicking Get started opens docs page with heading")

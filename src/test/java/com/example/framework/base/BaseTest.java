@@ -7,9 +7,7 @@ import com.microsoft.playwright.Page;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
-/**
- * BaseTest: initializes Playwright, opens base URL and cleans up.
- */
+
 public abstract class BaseTest {
 
     @BeforeMethod(alwaysRun = true)

@@ -6,10 +6,7 @@ import org.testng.ITestResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * Simple configurable RetryAnalyzer.
- * Uses config key "retry.count" (default 0) or -Dretry.count.
- */
+
 public class RetryAnalyzer implements IRetryAnalyzer {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RetryAnalyzer.class);

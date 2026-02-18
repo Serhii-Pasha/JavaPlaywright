@@ -7,9 +7,7 @@ import org.testng.ITestResult;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-/**
- * Manages ExtentTest instances per thread/test.
- */
+
 public final class ExtentTestManager {
 
     private static final ConcurrentMap<Long, ExtentTest> TEST_MAP = new ConcurrentHashMap<>();
